@@ -1,0 +1,42 @@
+%YAML:1.0
+image_width: 640
+image_height: 480
+fx: 4.5130774e+02
+fy: 4.5139519e+02
+cx: 3.7160185e+02
+cy: 2.4634801e+02
+imu_rate: 200
+camera_rate: 20
+sigma_gyro: 3.0e-03 #2.7e-4
+sigma_accel: 2.0e-02 #1.29e-2
+sigma_pixel: 1.0
+gravity: 9.805
+IWantYou: 60
+fast_threshold: 20
+hps_ini: 25
+hps_mat: 12
+ncc_threshold: 0.85
+zncc_threshold: 0.9
+ssd_threshold: 0.8
+max_angle: 80.0
+prior_inverse_depth: 1.0
+max_inverse_depth: 10.0
+min_inverse_depth: 0.05
+q_Sc: !!opencv-matrix
+   rows: 4
+   cols: 1
+   dt: d
+   data: [ 9.999142e-01, -2.677e-04,
+       -6.16117e-03, 6.261745e-03 ]
+cameraMatrix: !!opencv-matrix
+   rows: 3
+   cols: 3
+   dt: d
+   data: [ 451.30774, 0., 371.60185, 0.,
+       451.39519, 246.34801, 0., 0., 1. ]
+distCoeffs: !!opencv-matrix
+   rows: 5
+   cols: 1
+   dt: d
+   data: [  -0.36557,0.13762,0.00027,0.00060,
+       8.2243146931354552e-03 ] # k1,k2,p1,p2,k3
