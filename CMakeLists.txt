@@ -26,7 +26,7 @@ else()
    message(FATAL_ERROR "The compiler ${CMAKE_CXX_COMPILER} has no C++11 support. Please use a different C++ compiler.")
 endif()
 
-set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/bin)
+set(EXECUTABLE_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/bin)
 
 find_package( OpenCV REQUIRED )
 find_package(Eigen3 3.1.0 REQUIRED)
@@ -37,6 +37,8 @@ include_directories(${Pangolin_INCLUDE_DIRS})
 include_directories(
 ${PROJECT_SOURCE_DIR}/include
 ${PROJECT_SOURCE_DIR}/Sensor
+${PROJECT_SOURCE_DIR}/viewer
+${PROJECT_SOURCE_DIR}/src
 )
 
 set(LIBS 
@@ -44,6 +46,7 @@ ${OpenCV_LIBS}
 ${EIGEN3_LIBS}
 ${Pangolin_LIBRARIES}
 ${PROJECT_SOURCE_DIR}/Sensor/lib/libSensor.so
+${PROJECT_SOURCE_DIR}/viewer/lib/libViewer.so
 libcyusb.so
 )
 
@@ -52,3 +55,14 @@ set(SOURCES src/main.cpp src/Camera.cpp src/CamPose.cpp src/Feature.cpp src/EKFS
 
 add_executable( ekfslam ${SOURCES} )
 target_link_libraries( ekfslam ${LIBS} )
+
+add_executable( ekfslam_viewer
+src/testViewer.cc
+src/Camera.cpp
+src/CamPose.cpp
+src/Feature.cpp
+src/EKFSystem.cpp
+#src/PangoViewer.cpp
+)
+target_link_libraries( ekfslam_viewer ${LIBS} )
+
